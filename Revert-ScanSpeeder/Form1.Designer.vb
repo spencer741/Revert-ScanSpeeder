@@ -50,7 +50,7 @@ Partial Class Form1
         'cbo_Extensions
         '
         Me.cbo_Extensions.FormattingEnabled = True
-        Me.cbo_Extensions.Items.AddRange(New Object() {".JPG", ".PNG", ".TIFF"})
+        Me.cbo_Extensions.Items.AddRange(New Object() {".jpg", ".png", ".tiff"})
         Me.cbo_Extensions.Location = New System.Drawing.Point(26, 41)
         Me.cbo_Extensions.Name = "cbo_Extensions"
         Me.cbo_Extensions.Size = New System.Drawing.Size(121, 24)

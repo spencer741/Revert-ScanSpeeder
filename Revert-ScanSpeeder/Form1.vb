@@ -21,12 +21,11 @@ Public Class Form1
             ' Get a reference to each file in that directory.
             Dim fiArr As FileInfo() = di.GetFiles()
 
-            ' Display the names of the files.
             Dim fri As FileInfo
 
             'initiate looping sequence
             For Each fri In fiArr
-                If fri.Extension.Equals(cbo_Extensions.SelectedItem) Then
+                If fri.Extension.Equals(cbo_Extensions.SelectedItem) Or fri.Extension.Equals(cbo_Extensions.SelectedItem.ToString.ToUpper) Then
                     'Label1.Text = "Processing file: " + fri.FullName
                     Label1.Text = "Processing folder: " + path
                     ProcessImage(fri, path)
