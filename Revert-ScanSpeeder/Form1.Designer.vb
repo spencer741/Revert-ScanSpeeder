@@ -27,13 +27,15 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cbo_Extensions = New System.Windows.Forms.ComboBox()
         Me.cbo_lbl_Extensions = New System.Windows.Forms.Label()
+        Me.cbo_DPI = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btn_BrowseFolder
         '
-        Me.btn_BrowseFolder.Location = New System.Drawing.Point(26, 90)
+        Me.btn_BrowseFolder.Location = New System.Drawing.Point(26, 135)
         Me.btn_BrowseFolder.Name = "btn_BrowseFolder"
-        Me.btn_BrowseFolder.Size = New System.Drawing.Size(75, 23)
+        Me.btn_BrowseFolder.Size = New System.Drawing.Size(75, 26)
         Me.btn_BrowseFolder.TabIndex = 0
         Me.btn_BrowseFolder.Text = "Browse..."
         Me.btn_BrowseFolder.UseVisualStyleBackColor = True
@@ -41,7 +43,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(121, 93)
+        Me.Label1.Location = New System.Drawing.Point(127, 140)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(20, 17)
         Me.Label1.TabIndex = 1
@@ -65,11 +67,31 @@ Partial Class Form1
         Me.cbo_lbl_Extensions.TabIndex = 3
         Me.cbo_lbl_Extensions.Text = "Select Picture Extension"
         '
+        'cbo_DPI
+        '
+        Me.cbo_DPI.FormattingEnabled = True
+        Me.cbo_DPI.Items.AddRange(New Object() {"Same as File", "72", "96", "150", "300", "2540", "4000"})
+        Me.cbo_DPI.Location = New System.Drawing.Point(26, 94)
+        Me.cbo_DPI.Name = "cbo_DPI"
+        Me.cbo_DPI.Size = New System.Drawing.Size(121, 24)
+        Me.cbo_DPI.TabIndex = 4
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(23, 74)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(151, 17)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Set DPI for new image."
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.cbo_DPI)
         Me.Controls.Add(Me.cbo_lbl_Extensions)
         Me.Controls.Add(Me.cbo_Extensions)
         Me.Controls.Add(Me.Label1)
@@ -86,4 +108,6 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents cbo_Extensions As ComboBox
     Friend WithEvents cbo_lbl_Extensions As Label
+    Friend WithEvents cbo_DPI As ComboBox
+    Friend WithEvents Label2 As Label
 End Class

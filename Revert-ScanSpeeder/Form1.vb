@@ -34,8 +34,10 @@ Public Class Form1
 
         End If
     End Sub
-
+    'TODO: old test pic was 72 dpi. New image was 96 dpi. Old was 24 bit depth. New is 32 bit depth. Why?
     Private Sub ProcessImage(fri As FileInfo, path As String)
+
+
         Dim image As Bitmap = New Bitmap(Drawing.Image.FromFile(fri.FullName))
         Dim imageSize As Size = image.Size
         Dim imageWidth As Short = imageSize.Width
@@ -43,6 +45,22 @@ Public Class Form1
         Dim pixelColor As Color
 
         Dim newImage As Bitmap = New Bitmap(imageWidth, imageHeight)  'Test to recreate image
+
+        'Setting proper resolutions
+        Dim VR As Single = image.VerticalResolution
+        Dim HR As Single = image.HorizontalResolution
+
+        'Handle image resolutions
+        Dim HVR As Single
+
+        If cbo_DPI.SelectedIndex = 0 Then
+            'It's not setting the right resolution....not dropping in here
+            newImage.SetResolution(72, 72)
+        Else
+            HVR = cbo_DPI.SelectedItem
+            'Single(cbo_DPI.SelectedItem)
+            newImage.SetResolution(HVR, HVR)
+        End If
 
         'Scan vertically
         For pw = 0 To imageWidth - 1
@@ -54,4 +72,7 @@ Public Class Form1
         newImage.Save(path + "\\" + "newImage.jpg")
     End Sub
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cbo_DPI.SelectedIndex = 0
+    End Sub
 End Class
