@@ -27,11 +27,17 @@ Public Class Form1
             'initiate looping sequence
             For Each fri In fiArr
                 If fri.Extension.Equals(cbo_Extensions.SelectedItem) Then
-                    Label1.Text += fri.Extension
+                    Label1.Text = "Processing file: " + fri.Name
+                    ProcessImage(fri)
                 End If
             Next fri
-            'Dim image As Bitmap = New Bitmap(Drawing.Image.FromFile(path))
+
         End If
+    End Sub
+
+    Private Sub ProcessImage(fri As FileInfo)
+        Dim image As Bitmap = New Bitmap(Drawing.Image.FromFile(fri.FullName))
+
     End Sub
 
 End Class
