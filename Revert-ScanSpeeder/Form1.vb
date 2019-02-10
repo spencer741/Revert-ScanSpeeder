@@ -37,7 +37,18 @@ Public Class Form1
 
     Private Sub ProcessImage(fri As FileInfo)
         Dim image As Bitmap = New Bitmap(Drawing.Image.FromFile(fri.FullName))
+        Dim imageSize As Size = image.Size
+        Dim imageWidth As Short = imageSize.Width
+        Dim imageHeight As Short = imageSize.Height
+        Dim pixelColor As Color
 
+        For ph = 0 To imageHeight
+            For pw = 0 To imageWidth
+                pixelColor = image.GetPixel(pw, ph)
+
+            Next
+        Next
+        image.GetPixel(0, 0)
     End Sub
 
 End Class
