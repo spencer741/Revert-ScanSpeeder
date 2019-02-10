@@ -27,28 +27,32 @@ Public Class Form1
             'initiate looping sequence
             For Each fri In fiArr
                 If fri.Extension.Equals(cbo_Extensions.SelectedItem) Then
-                    Label1.Text = "Processing file: " + fri.Name
-                    ProcessImage(fri)
+                    'Label1.Text = "Processing file: " + fri.FullName
+                    Label1.Text = "Processing folder: " + path
+                    ProcessImage(fri, path)
                 End If
             Next fri
 
         End If
     End Sub
 
-    Private Sub ProcessImage(fri As FileInfo)
+    Private Sub ProcessImage(fri As FileInfo, path As String)
         Dim image As Bitmap = New Bitmap(Drawing.Image.FromFile(fri.FullName))
         Dim imageSize As Size = image.Size
         Dim imageWidth As Short = imageSize.Width
         Dim imageHeight As Short = imageSize.Height
         Dim pixelColor As Color
 
-        For ph = 0 To imageHeight
-            For pw = 0 To imageWidth
-                pixelColor = image.GetPixel(pw, ph)
+        Dim newImage As Bitmap = New Bitmap(imageWidth, imageHeight)  'Test to recreate image
 
+        'Scan vertically
+        For pw = 0 To imageWidth - 1
+            For ph = 0 To imageHeight - 1
+                pixelColor = image.GetPixel(pw, ph) 'use LockBits for efficiency later if needed
+                newImage.SetPixel(pw, ph, pixelColor) 'Test to recreate image
             Next
         Next
-        image.GetPixel(0, 0)
+        newImage.Save(path + "\\" + "newImage.jpg")
     End Sub
 
 End Class
