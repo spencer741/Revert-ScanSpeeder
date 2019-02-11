@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 
 Public Class Form1
-
+    'This project lacks in the proper implemenation of handling different image files, dealing with mime types and such.
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_BrowseFolder.Click
 
         If cbo_Extensions.SelectedItem = "" Then
@@ -46,21 +46,22 @@ Public Class Form1
 
         Dim newImage As Bitmap = New Bitmap(imageWidth, imageHeight)  'Test to recreate image
 
-        'Setting proper resolutions
-        Dim VR As Single = image.VerticalResolution
-        Dim HR As Single = image.HorizontalResolution
 
-        'Handle image resolutions
-        Dim HVR As Single
 
-        If cbo_DPI.SelectedIndex = 0 Then
-            'It's not setting the right resolution....not dropping in here
-            newImage.SetResolution(72, 72)
-        Else
-            HVR = cbo_DPI.SelectedItem
-            'Single(cbo_DPI.SelectedItem)
-            newImage.SetResolution(HVR, HVR)
-        End If
+        ''Setting proper resolutions
+        'Dim VR As Single = image.VerticalResolution
+        'Dim HR As Single = image.HorizontalResolution
+
+        ''Handle image resolutions
+        'Dim HVR As Single
+
+        'If cbo_DPI.SelectedIndex = 0 Then
+        '    newImage.SetResolution(HR, VR)
+        'Else
+        '    HVR = cbo_DPI.SelectedItem
+        '    'Single(cbo_DPI.SelectedItem)
+        '    newImage.SetResolution(HVR, HVR)
+        'End If
 
         'Scan vertically
         For pw = 0 To imageWidth - 1
